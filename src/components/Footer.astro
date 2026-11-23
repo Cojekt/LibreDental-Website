@@ -1,0 +1,20 @@
+---
+// TODO: replace with your real repository and contact details.
+const year = new Date().getFullYear();
+const repoUrl = "https://github.com/your-org/libredental";
+const contactEmail = "contact@libredental.com";
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p class="footer-copy">
+      &copy; {year} The LibreDental contributors. Licensed under an open-source
+      license — see <a href="/license/">License</a>.
+    </p>
+    <ul class="footer-links">
+      <li><a href={repoUrl}>Source code</a></li>
+      <li><a href="/docs/">Documentation</a></li>
+      <li><a href={`mailto:${contactEmail}`}>{contactEmail}</a></li>
+    </ul>
+  </div>
+</footer>
