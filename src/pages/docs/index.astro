@@ -1,25 +1,48 @@
 ---
 import Base from "../../layouts/Base.astro";
+import { docsUrl, discussionsUrl } from "../../site";
+
+const repoGuides = [
+  ["LAN server setup", "lan-server-setup.md"],
+  ["Setting up appointment reminders", "appointment-reminders-setup.md"],
+  ["Notification alerts", "notification-alerts.md"],
+  ["Claims clearinghouse", "claims-clearinghouse.md"],
+  ["Insurance fee overrides", "insurance-fee-overrides.md"],
+  ["Program bridges", "program-bridges.md"],
+];
 ---
 
 <Base
   title="Documentation"
-  description="LibreDental documentation: installation, configuration, and usage."
+  description="LibreDental documentation: installation, office server setup, reminders, claims and more."
 >
   <div class="wrap">
     <h1>Documentation</h1>
     <p class="lead">
-      Everything you need to install, configure, and run LibreDental.
+      How to install, set up and run LibreDental.
     </p>
 
-    <h2>Guides</h2>
+    <h2>Getting started</h2>
     <ul>
       <li><a href="/docs/getting-started/">Installation and first run</a></li>
     </ul>
 
+    <h2>Setup guides</h2>
+    <p>These guides live in the source repository on GitHub.</p>
+    <ul>
+      {
+        repoGuides.map(([label, file]) => (
+          <li>
+            <a href={`${docsUrl}/${file}`}>{label}</a>
+          </li>
+        ))
+      }
+    </ul>
+
     <p class="muted">
-      TODO: add pages here as the docs grow — configuration, backups, upgrades,
-      and a FAQ are the usual next four.
+      Can't find what you need? Ask in <a href={discussionsUrl}
+        >GitHub Discussions</a
+      >.
     </p>
   </div>
 </Base>

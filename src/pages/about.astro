@@ -1,41 +1,63 @@
 ---
 import Base from "../layouts/Base.astro";
+import {
+  repoUrl,
+  issuesUrl,
+  discussionsUrl,
+  contactEmail,
+} from "../site";
 ---
 
 <Base
   title="About"
-  description="About the LibreDental open-source project."
+  description="Why LibreDental exists, its commitment to staying free and open source, and how to get involved."
 >
   <div class="wrap">
     <h1>About LibreDental</h1>
     <p class="lead">
-      LibreDental is an open-source dental practice management system built and
-      maintained by its community.
+      LibreDental is a fast, open-source dental practice management system that
+      gives practices full ownership of their software and their patient data.
     </p>
 
     <h2>Why it exists</h2>
     <p>
-      TODO: one or two paragraphs on the problem the project solves and who it
-      is for.
+      Dental practices need modern practice management software they can rely
+      on without being locked in. LibreDental runs natively on your own
+      computers, works without depending on anyone's cloud, and stores its data
+      in files you can back up yourself.
     </p>
 
-    <h2>Governance</h2>
-    <p>
-      TODO: how decisions are made, who the maintainers are, and how to become
-      one.
-    </p>
+    <h2>Our commitment</h2>
+    <ul>
+      <li>
+        The core of LibreDental will always be free and open source under the
+        Apache 2.0 license.
+      </li>
+      <li>
+        We will never put updates behind fees, restrict self-hosting, require
+        license keys, or relicense the core under restrictive terms.
+      </li>
+      <li>
+        Your data belongs to you. Local installations will never be throttled,
+        feature-gated, or made dependent on third-party cloud servers.
+      </li>
+    </ul>
 
     <h2>Get involved</h2>
+    <p>
+      Contributions are welcome from developers, dental professionals,
+      designers and open-source advocates.
+    </p>
     <ul>
-      <li>TODO: link to the source repository</li>
-      <li>TODO: link to the issue tracker and contribution guide</li>
-      <li>TODO: link to the community chat or mailing list</li>
+      <li><a href={repoUrl}>Source code on GitHub</a>, including the contribution guide in the README</li>
+      <li><a href={issuesUrl}>Report a bug or request a feature</a></li>
+      <li><a href={discussionsUrl}>Ask questions and join the discussion</a></li>
     </ul>
 
     <h2>Contact</h2>
     <p>
       General enquiries:
-      <a href="mailto:contact@libredental.com">contact@libredental.com</a>
+      <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
     </p>
   </div>
 </Base>

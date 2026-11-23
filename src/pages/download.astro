@@ -1,0 +1,98 @@
+---
+import Base from "../layouts/Base.astro";
+import { releasesUrl, latestDownload } from "../site";
+
+const groups = [
+  {
+    title: "Windows",
+    note: "Windows 10 or 11.",
+    files: [
+      ["Installer (x64)", "libredental-windows-amd64-installer.exe"],
+      ["Installer (ARM64)", "libredental-windows-arm64-installer.exe"],
+    ],
+  },
+  {
+    title: "Linux (x64)",
+    note: "Pick the package for your distribution, or the AppImage for any.",
+    files: [
+      ["AppImage", "libredental-linux-amd64.AppImage"],
+      [".deb (Debian, Ubuntu)", "libredental-linux-amd64.deb"],
+      [".rpm (Fedora, openSUSE)", "libredental-linux-amd64.rpm"],
+      [".pkg.tar.zst (Arch)", "libredental-linux-amd64.pkg.tar.zst"],
+    ],
+  },
+  {
+    title: "Linux (ARM64)",
+    note: "Same packages, for ARM computers.",
+    files: [
+      ["AppImage", "libredental-linux-arm64.AppImage"],
+      [".deb (Debian, Ubuntu)", "libredental-linux-arm64.deb"],
+      [".rpm (Fedora, openSUSE)", "libredental-linux-arm64.rpm"],
+      [".pkg.tar.zst (Arch)", "libredental-linux-arm64.pkg.tar.zst"],
+    ],
+  },
+  {
+    title: "Office server",
+    note: "For practices with several workstations. Runs on one PC; the others connect from a browser.",
+    files: [
+      ["Windows (x64)", "libredental-server-windows-amd64.exe"],
+      ["Windows (ARM64)", "libredental-server-windows-arm64.exe"],
+      ["Linux (x64)", "libredental-server-linux-amd64"],
+      ["Linux (ARM64)", "libredental-server-linux-arm64"],
+    ],
+  },
+];
+---
+
+<Base
+  title="Download"
+  description="Download LibreDental for Windows and Linux, or the office server for multi-workstation practices."
+>
+  <div class="wrap">
+    <h1>Download LibreDental</h1>
+    <p class="lead">
+      These links always point at the latest release. LibreDental is in alpha,
+      so check the <a href={releasesUrl}>release notes</a> for what changed.
+    </p>
+
+    <div class="card-grid">
+      {
+        groups.map((group) => (
+          <div class="card">
+            <h3>{group.title}</h3>
+            <p>{group.note}</p>
+            <ul class="download-list">
+              {group.files.map(([label, asset]) => (
+                <li>
+                  <a href={latestDownload(asset)}>{label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <h2>Not supported yet</h2>
+    <p>macOS builds aren't available at the moment.</p>
+
+    <h2>Try it with sample data</h2>
+    <p>
+      Each release includes a fictional demo practice you can load to explore
+      the app: a <a href={latestDownload("libredental-demo-us-small.zip")}
+        >small one</a
+      > (about 18 patients) and a <a
+        href={latestDownload("libredental-demo-us-large.zip")}>large one</a
+      > (about 500 patients). The <a href="/docs/getting-started/#demo-data"
+        >installation guide</a
+      > explains how to load them.
+    </p>
+
+    <h2>Verify your download</h2>
+    <p>
+      Compare your file against <a href={latestDownload("checksums.txt")}
+        >checksums.txt</a
+      >. Older versions are on the <a href={releasesUrl}>releases page</a>.
+    </p>
+  </div>
+</Base>

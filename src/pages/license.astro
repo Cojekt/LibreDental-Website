@@ -1,17 +1,19 @@
 ---
 import Base from "../layouts/Base.astro";
+import { repoUrl } from "../site";
 ---
 
 <Base
   title="License"
-  description="LibreDental is released under an open-source license."
+  description="LibreDental is released under the Apache License, Version 2.0."
 >
   <div class="wrap">
     <h1>License</h1>
     <p class="lead">
-      TODO: state the license LibreDental is released under, then paste the full
-      license text below or link to the <code>LICENSE</code> file in the source
-      repository.
+      LibreDental is released under the
+      <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+      The full text is in the <a href={`${repoUrl}/blob/main/LICENSE`}><code>LICENSE</code> file</a>
+      in the source repository.
     </p>
 
     <h2>In short</h2>
@@ -19,18 +21,29 @@ import Base from "../layouts/Base.astro";
       <li>You may use LibreDental for any purpose, including commercially.</li>
       <li>You may study, modify, and redistribute the source.</li>
       <li>
-        Redistributions must keep the copyright notice and license text intact.
+        Redistributions must keep the copyright notice and license text, and
+        say which files were changed.
       </li>
+      <li>The license includes a patent grant from contributors.</li>
+      <li>It does not grant rights to the LibreDental name or logo.</li>
       <li>Provided as-is, without warranty.</li>
     </ul>
 
     <p class="muted">
-      The summary above is not legal advice — the license text governs.
+      The summary above is not legal advice. The license text governs.
     </p>
 
     <h2>Third-party components</h2>
     <p>
-      TODO: list bundled dependencies with licenses that require attribution.
+      LibreDental is built on open-source libraries that keep their own
+      licenses. They are listed in the repository's <code>go.mod</code> and
+      <code>frontend/package.json</code>.
+    </p>
+
+    <h2>Trademarks</h2>
+    <p>
+      LibreDental™ is a trademark claiming common law rights. The LibreDental
+      name and logo are trademarks of the LibreDental project.
     </p>
   </div>
 </Base>

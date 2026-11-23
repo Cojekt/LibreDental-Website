@@ -4,40 +4,40 @@ import Base from "../layouts/Base.astro";
 
 <Base
   title="Open-source dental practice management"
-  description="LibreDental is an open-source dental practice management system. Free to self-host, free to modify, free to share."
+  description="LibreDental is a free, open-source dental practice management system for Linux and Windows. Local-first, Apache 2.0 licensed, no subscriptions or license keys."
 >
   <div class="wrap hero">
     <h1>Dental practice software that belongs to its users</h1>
     <p class="lead">
-      LibreDental is an open-source dental practice management system. Run it on
-      your own hardware, inspect every line of code, and adapt it to how your
-      practice actually works.
+      LibreDental is a free, open-source practice management system for dental
+      offices. It runs as a native desktop app on Linux and Windows, keeps your
+      patient data on your own computers, and never asks for a subscription.
     </p>
     <div class="hero-actions">
-      <a class="button button-primary" href="/docs/">Read the docs</a>
-      <a class="button button-secondary" href="/about/">About the project</a>
+      <a class="button button-primary" href="/download/">Download</a>
+      <a class="button button-secondary" href="/docs/">Read the docs</a>
     </div>
 
     <div class="card-grid">
       <div class="card">
-        <h3>Open source</h3>
+        <h3>Free, for good</h3>
         <p>
-          The full source is public. Audit it, fork it, or contribute back —
-          nothing is hidden behind a license server.
+          Apache 2.0 licensed. No update fees, no license keys, and no paid
+          tier holding back core features.
         </p>
       </div>
       <div class="card">
-        <h3>Self-hosted</h3>
+        <h3>Local-first</h3>
         <p>
-          Your patient data stays on infrastructure you control. No vendor
-          lock-in and no per-seat pricing.
+          Data lives in a local database on your own machine. It doesn't depend
+          on anyone's cloud, and backing up means copying a folder.
         </p>
       </div>
       <div class="card">
-        <h3>Community-driven</h3>
+        <h3>One PC or a whole office</h3>
         <p>
-          Features are shaped by the practices and developers who use the
-          software, not by a sales roadmap.
+          Use the desktop app on a single computer, or run the server on one PC
+          and connect other workstations from a web browser.
         </p>
       </div>
     </div>
@@ -45,11 +45,34 @@ import Base from "../layouts/Base.astro";
 
   <div class="wrap">
     <hr />
-    <h2>Getting started</h2>
-    <p>
-      Installation instructions, configuration reference, and upgrade notes live
-      in the documentation.
+    <h2>What it does</h2>
+    <ul>
+      <li>
+        <strong>Patients:</strong> demographics, clinical history, insurance, and
+        documents and X-rays, including DICOM.
+      </li>
+      <li>
+        <strong>Charting:</strong> an interactive odontogram with surface-level
+        restoration history and treatment planning.
+      </li>
+      <li>
+        <strong>Scheduling:</strong> multi-provider, multi-operatory calendar
+        with day, week, month and agenda views, plus SMS and email reminders.
+      </li>
+      <li>
+        <strong>Billing:</strong> patient ledgers and payments, fee schedules,
+        and insurance claims (X12 837D) with optional clearinghouse submission.
+      </li>
+      <li>
+        <strong>Audit trail:</strong> a separate log of who changed patient,
+        clinical and billing data, and when.
+      </li>
+    </ul>
+
+    <p class="muted">
+      LibreDental is in alpha, and features change quickly between releases.
+      The <a href="/download/">download page</a> links to the latest release
+      notes.
     </p>
-    <p><a href="/docs/getting-started/">Installation guide →</a></p>
   </div>
 </Base>

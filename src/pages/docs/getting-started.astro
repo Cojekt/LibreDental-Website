@@ -1,35 +1,71 @@
 ---
 import Base from "../../layouts/Base.astro";
+import { docsUrl } from "../../site";
 ---
 
 <Base
   title="Installation"
-  description="How to install and run LibreDental for the first time."
+  description="How to install LibreDental on Windows or Linux, where your data is stored, and how to load demo data."
 >
   <div class="wrap">
     <h1>Installation and first run</h1>
     <p class="lead">
-      This page is a placeholder — replace the commands below with the real
-      install steps for LibreDental.
+      Install the desktop app on Windows or Linux. For several workstations
+      sharing one database, see the office server setup at the bottom.
     </p>
 
     <h2>Requirements</h2>
     <ul>
-      <li>TODO: supported operating systems</li>
-      <li>TODO: database / runtime version</li>
-      <li>TODO: minimum hardware</li>
+      <li>Windows 10 or 11, or a 64-bit Linux distribution (x64 or ARM64).</li>
+      <li>macOS is not supported at the moment.</li>
     </ul>
 
     <h2>Install</h2>
-    <pre><code># TODO: replace with the real install command
-git clone https://github.com/your-org/libredental.git
-cd libredental
-# follow the setup instructions in the repository README</code></pre>
+    <p>Get the file for your system from the <a href="/download/">download page</a>.</p>
+    <ul>
+      <li>
+        <strong>Windows:</strong> run the installer. It uses the WebView2
+        runtime, which Windows 10 and 11 already include.
+      </li>
+      <li><strong>Debian / Ubuntu:</strong> <code>sudo apt install ./libredental-linux-amd64.deb</code></li>
+      <li><strong>Fedora / openSUSE:</strong> <code>sudo dnf install ./libredental-linux-amd64.rpm</code></li>
+      <li><strong>Arch:</strong> <code>sudo pacman -U libredental-linux-amd64.pkg.tar.zst</code></li>
+      <li>
+        <strong>Any distribution:</strong> make the AppImage executable with
+        <code>chmod +x libredental-linux-amd64.AppImage</code>, then run it.
+      </li>
+    </ul>
+    <p class="muted">On ARM64, use the matching <code>arm64</code> file names.</p>
 
-    <h2>First run</h2>
+    <h2>Where your data lives</h2>
     <p>
-      TODO: describe the initial setup wizard, default credentials, and how to
-      change them before exposing the instance to a network.
+      LibreDental stores everything in a <code>LibreDental</code> folder in your
+      user configuration directory:
+    </p>
+    <ul>
+      <li>Linux: <code>~/.config/LibreDental</code></li>
+      <li>Windows: <code>%AppData%\LibreDental</code></li>
+    </ul>
+    <p>To back up, copy that folder somewhere safe while the app is closed.</p>
+
+    <h2 id="demo-data">Try it with demo data</h2>
+    <p>
+      The demo archives on the <a href="/download/">download page</a> contain a
+      fictional practice. To load one:
+    </p>
+    <ol>
+      <li>Close LibreDental.</li>
+      <li>Back up your existing <code>LibreDental</code> folder (see above).</li>
+      <li>Extract the archive's <code>LibreDental</code> folder in its place.</li>
+    </ol>
+
+    <h2>Office server (several workstations)</h2>
+    <p>
+      The server runs on one central PC, and other workstations use it from a
+      web browser. Setup covers firewall rules, a static IP and keeping the PC
+      awake, all in the <a href={`${docsUrl}/lan-server-setup.md`}
+        >LAN server setup guide</a
+      >.
     </p>
 
     <hr />
