@@ -33,6 +33,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
+    <div class="wip-banner">
+      <div class="wrap">
+        <strong>Early alpha:</strong> LibreDental is not ready for real patient
+        data yet, and this website is still a work in progress.
+      </div>
+    </div>
     <Header />
     <main id="main">
       <slot />

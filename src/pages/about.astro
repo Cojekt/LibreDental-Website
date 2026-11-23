@@ -1,11 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
-import {
-  repoUrl,
-  issuesUrl,
-  discussionsUrl,
-  contactEmail,
-} from "../site";
+import { repoUrl, issuesUrl, discussionsUrl } from "../site";
 ---
 
 <Base
@@ -53,11 +48,5 @@ import {
       <li><a href={issuesUrl}>Report a bug or request a feature</a></li>
       <li><a href={discussionsUrl}>Ask questions and join the discussion</a></li>
     </ul>
-
-    <h2>Contact</h2>
-    <p>
-      General enquiries:
-      <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
-    </p>
   </div>
 </Base>

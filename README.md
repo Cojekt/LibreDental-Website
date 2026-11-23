@@ -32,3 +32,9 @@ npm run dev        # http://localhost:4321
 ```sh
 npm run build      # outputs static HTML/CSS/JS to ./dist
 ```
+
+## License
+
+Licensed under the [Apache License, Version 2.0](LICENSE). The LibreDental
+name and logo are trademarks of the LibreDental project and are not covered
+by this license.
