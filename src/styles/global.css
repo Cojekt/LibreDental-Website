@@ -4,7 +4,7 @@
   --text: #16181d;
   --text-muted: #5b6270;
   --border: #e3e6eb;
-  --accent: #0f6fde;
+  --accent: #0b7a75;
   --accent-contrast: #ffffff;
   --radius: 10px;
   --max-width: 46rem;
@@ -21,7 +21,7 @@
     --text: #e8eaee;
     --text-muted: #9aa2b1;
     --border: #262b35;
-    --accent: #6aa9ff;
+    --accent: #4fd1c5;
     --accent-contrast: #0f1115;
   }
 }
@@ -88,17 +88,10 @@ main {
   letter-spacing: -0.01em;
 }
 
-.brand-mark {
-  display: grid;
-  place-items: center;
+.brand-logo {
+  display: block;
   width: 1.75rem;
   height: 1.75rem;
-  border-radius: 7px;
-  background: var(--accent);
-  color: var(--accent-contrast);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
 }
 
 .nav-list {
