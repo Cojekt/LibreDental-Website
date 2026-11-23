@@ -1,0 +1,14 @@
+README.md
+  h_46a62801059d09 1-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "fdd4be5baaf8f21dee734e7a6e5eb339a9404c88",
+  "prompts": {},
+  "humans": {
+    "h_46a62801059d09": {
+      "author": "RedMarcher <weijiixu@gmail.com>"
+    }
+  }
+}
