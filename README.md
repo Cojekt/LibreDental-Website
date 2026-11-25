@@ -14,6 +14,7 @@ src/components/         Header and Footer
 src/styles/global.css   All styling (light + dark via prefers-color-scheme)
 src/pages/index.astro   Landing page
 src/pages/about.astro   About the project
+src/pages/contribute.astro  How to contribute (devs, dentists, sponsors)
 src/pages/docs/         Documentation index + getting-started page
 src/pages/license.astro License page
 src/pages/404.astro     Custom 404

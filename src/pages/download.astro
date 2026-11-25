@@ -1,52 +1,97 @@
 ---
 import Base from "../layouts/Base.astro";
+import OsIcon from "../components/OsIcon.astro";
 import { releasesUrl, latestDownload } from "../site";
 
-const groups = [
+// Each row is [label, detail, x64 asset, ARM64 asset].
+type Row = [string, string, string, string];
+
+const platforms: {
+  os: "windows" | "linux";
+  name: string;
+  note: string;
+  desktop: Row[];
+  server: Row[];
+}[] = [
   {
-    title: "Windows",
-    note: "Windows 10 or 11.",
-    files: [
-      ["Installer (x64)", "libredental-windows-amd64-installer.exe"],
-      ["Installer (ARM64)", "libredental-windows-arm64-installer.exe"],
+    os: "windows",
+    name: "Windows",
+    note: "Windows 10 or 11",
+    desktop: [
+      [
+        "Installer",
+        "",
+        "libredental-windows-amd64-installer.exe",
+        "libredental-windows-arm64-installer.exe",
+      ],
+    ],
+    server: [
+      [
+        "Server",
+        ".exe",
+        "libredental-server-windows-amd64.exe",
+        "libredental-server-windows-arm64.exe",
+      ],
     ],
   },
   {
-    title: "Linux (x64)",
-    note: "Pick the package for your distribution, or the AppImage for any.",
-    files: [
-      ["AppImage", "libredental-linux-amd64.AppImage"],
-      [".deb (Debian, Ubuntu)", "libredental-linux-amd64.deb"],
-      [".rpm (Fedora, openSUSE)", "libredental-linux-amd64.rpm"],
-      [".pkg.tar.zst (Arch)", "libredental-linux-amd64.pkg.tar.zst"],
+    os: "linux",
+    name: "Linux",
+    note: "Most distributions",
+    desktop: [
+      [
+        "AppImage",
+        "Any distribution",
+        "libredental-linux-amd64.AppImage",
+        "libredental-linux-arm64.AppImage",
+      ],
+      [
+        ".deb",
+        "Debian, Ubuntu",
+        "libredental-linux-amd64.deb",
+        "libredental-linux-arm64.deb",
+      ],
+      [
+        ".rpm",
+        "Fedora, openSUSE",
+        "libredental-linux-amd64.rpm",
+        "libredental-linux-arm64.rpm",
+      ],
+      [
+        ".pkg.tar.zst",
+        "Arch",
+        "libredental-linux-amd64.pkg.tar.zst",
+        "libredental-linux-arm64.pkg.tar.zst",
+      ],
+    ],
+    server: [
+      [
+        "Server",
+        "Binary",
+        "libredental-server-linux-amd64",
+        "libredental-server-linux-arm64",
+      ],
     ],
   },
+];
+
+const sections = [
   {
-    title: "Linux (ARM64)",
-    note: "Same packages, for ARM computers.",
-    files: [
-      ["AppImage", "libredental-linux-arm64.AppImage"],
-      [".deb (Debian, Ubuntu)", "libredental-linux-arm64.deb"],
-      [".rpm (Fedora, openSUSE)", "libredental-linux-arm64.rpm"],
-      [".pkg.tar.zst (Arch)", "libredental-linux-arm64.pkg.tar.zst"],
-    ],
+    key: "desktop" as const,
+    title: "Desktop app",
+    note: "For a single computer.",
   },
   {
+    key: "server" as const,
     title: "Office server",
-    note: "For practices with several workstations. Runs on one PC; the others connect from a browser.",
-    files: [
-      ["Windows (x64)", "libredental-server-windows-amd64.exe"],
-      ["Windows (ARM64)", "libredental-server-windows-arm64.exe"],
-      ["Linux (x64)", "libredental-server-linux-amd64"],
-      ["Linux (ARM64)", "libredental-server-linux-arm64"],
-    ],
+    note: "Runs on one PC; other workstations connect from a browser.",
   },
 ];
 ---
 
 <Base
   title="Download"
-  description="Download LibreDental for Windows and Linux, or the office server for multi-workstation practices."
+  description="Download LibreDental for Windows and Linux, as a desktop app or as an office server for multi-workstation practices."
 >
   <div class="wrap">
     <h1>Download LibreDental</h1>
@@ -65,26 +110,72 @@ const groups = [
       <a href={releasesUrl}>release notes</a> for what changed.
     </p>
 
-    <div class="card-grid">
+    <div class="platform-grid">
       {
-        groups.map((group) => (
-          <div class="card">
-            <h3>{group.title}</h3>
-            <p>{group.note}</p>
-            <ul class="download-list">
-              {group.files.map(([label, asset]) => (
-                <li>
-                  <a href={latestDownload(asset)}>{label}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
+        platforms.map((p) => (
+          <section class="platform" aria-labelledby={`dl-${p.os}`}>
+            <header class="platform-head">
+              <OsIcon os={p.os} />
+              <div>
+                <h2 id={`dl-${p.os}`}>{p.name}</h2>
+                <p class="platform-note">{p.note}</p>
+              </div>
+            </header>
+
+            {sections.map((s) => (
+              <div class="platform-section">
+                <h3>{s.title}</h3>
+                <p class="platform-section-note">{s.note}</p>
+                <ul class="dl-rows">
+                  {p[s.key].map(([label, detail, x64, arm64]) => (
+                    <li class="dl-row">
+                      <span class="dl-label">
+                        {label}
+                        {detail && <span class="dl-detail">{detail}</span>}
+                      </span>
+                      <span class="dl-arches">
+                        <a
+                          class="dl-pill"
+                          href={latestDownload(x64)}
+                          aria-label={`${p.name} ${s.title} ${label}, x64`}
+                        >
+                          x64
+                        </a>
+                        <a
+                          class="dl-pill"
+                          href={latestDownload(arm64)}
+                          aria-label={`${p.name} ${s.title} ${label}, ARM64`}
+                        >
+                          ARM64
+                        </a>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </section>
         ))
       }
     </div>
 
-    <h2>Not supported yet</h2>
-    <p>macOS builds aren't available at the moment.</p>
+    <h2>Which one do I need?</h2>
+    <ul>
+      <li>
+        <strong>Desktop app or office server?</strong> Use the desktop app if
+        LibreDental will run on one computer. If several workstations need to
+        share the same data, install the office server on one PC and open
+        LibreDental from a web browser on the others.
+      </li>
+      <li>
+        <strong>x64 or ARM64?</strong> Most desktops and laptops are x64.
+        Choose ARM64 for ARM-based machines, such as Windows laptops with
+        Snapdragon processors or a Raspberry Pi.
+      </li>
+    </ul>
+
+    <h2>macOS</h2>
+    <p>macOS builds aren't available yet.</p>
 
     <h2>Try it with sample data</h2>
     <p>

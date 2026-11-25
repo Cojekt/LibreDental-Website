@@ -1,0 +1,96 @@
+---
+import Base from "../layouts/Base.astro";
+import {
+  repoUrl,
+  issuesUrl,
+  discussionsUrl,
+  contactEmail,
+} from "../site";
+---
+
+<Base
+  title="Contribute"
+  description="How to help LibreDental: contribute code, share feedback as a dental professional, spread the word, or endorse the project."
+>
+  <div class="wrap">
+    <h1>Contribute</h1>
+    <p class="lead">
+      LibreDental is built by volunteers. What helps most right now is people:
+      users, contributors and word of mouth.
+    </p>
+
+    <div class="notice">
+      <p class="notice-title">About donations</p>
+      <p>
+        Donations are always appreciated, but we haven't set up a way to
+        donate yet, and the project is in a good place right now. If you'd like
+        to help, the options below make the biggest difference.
+      </p>
+    </div>
+
+    <h2>Spread the word</h2>
+    <p>
+      This is the single most helpful thing you can do. Know a developer who'd
+      enjoy the project, or a dentist tired of locked-in software? Tell them
+      about LibreDental. Mention it to colleagues, in study clubs, on forums or
+      on social media. Every new user and contributor makes the project
+      stronger.
+    </p>
+
+    <h2>Developers</h2>
+    <p>
+      Code, testing, packaging and documentation are all welcome. LibreDental
+      is in early alpha, so there's plenty to work on and your contributions
+      can shape how it turns out.
+    </p>
+    <ul>
+      <li>
+        Start with the <a href={repoUrl}>source code on GitHub</a>; the README
+        includes the contribution guide.
+      </li>
+      <li>
+        Browse the <a href={issuesUrl}>open issues</a> to find something to pick
+        up, or report bugs you run into.
+      </li>
+      <li>
+        Not sure where to start? Ask in
+        <a href={discussionsUrl}>Discussions</a>.
+      </li>
+    </ul>
+
+    <h2>Dentists and dental staff</h2>
+    <p>
+      Software for dental offices should be shaped by the people who work in
+      them. If you're a dentist, hygienist, assistant or office manager, your
+      feedback is some of the most valuable help we can get.
+    </p>
+    <ul>
+      <li>
+        <a href="/download/">Try LibreDental with demo data</a> and tell us
+        what's missing, confusing or wrong for how your practice actually works.
+      </li>
+      <li>
+        Share your workflows for charting, scheduling, billing and insurance,
+        so we build the things that matter first.
+      </li>
+      <li>
+        Post in <a href={discussionsUrl}>Discussions</a> or email
+        <a href={`mailto:${contactEmail}`}>{contactEmail}</a>. No technical
+        knowledge needed.
+      </li>
+    </ul>
+
+    <h2>Sponsorship and endorsement</h2>
+    <p>
+      If you're a practice, dental school, professional association or company
+      that believes dental software should be free and open, a public
+      endorsement helps other practices trust the project and helps us find
+      contributors. We're always happy to hear from organisations that want to
+      be involved.
+    </p>
+    <p>
+      Get in touch at
+      <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+    </p>
+  </div>
+</Base>
